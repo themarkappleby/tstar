@@ -1,0 +1,17 @@
+{
+  "name": "tstar",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "cheerio": "^0.22.0",
+    "pug": "^2.0.0-beta11",
+    "request-promise": "^4.1.1"
+  }
+}

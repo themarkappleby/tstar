@@ -1,0 +1,10 @@
+doctype html
+html
+  head
+    title TStar
+    link(rel="stylesheet", href="styles.css")
+  body
+    each story in stories
+      h2= story.title
+      div !{story.html}
+    script(src="scripts.js")
