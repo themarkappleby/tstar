@@ -1,0 +1,22 @@
+doctype html
+html
+  head
+    title TStar
+    link(rel="stylesheet", href="styles.css")
+  body
+    .teasers
+      each story in stories
+        .teaser
+          .teaser-img(style="background-image: url(" + story.img + ")")
+          h5.teaser-title= story.title
+          
+    .stories
+      each story in stories
+        .story
+          h2.story-title= story.title
+          div !{story.html}
+    .controls
+      .controls-all All
+      .controls-next Next
+    script(src="https://code.jquery.com/jquery-3.2.0.min.js", integrity="sha256-JAW99MJVpJBGcbzEuXk4Az05s/XyDdBomFqNlM3ic+I=", crossorigin="anonymous")
+    script(src="scripts.js")

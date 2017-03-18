@@ -1,7 +1,7 @@
 var request = require('request-promise')
 var cheerio = require('cheerio')
-var pug = require('pug')
 var fs = require('fs')
+var buildTemplate = require('./build')
 
 var requestOptions = {
   uri: 'https://www.thestar.com/',
@@ -15,15 +15,12 @@ exports.handler = (event, context, callback) => {
   request(requestOptions).then(function ($) {
     var stories = getStories($)
     populateStories(stories, function () {
-      buildTemplate(stories)
+      fs.writeFile('./data/data.json', JSON.stringify(stories), function () {
+        buildTemplate()
+      })
     })
   })
   // callback(null, 'Hello from Lambda')
-}
-
-function buildTemplate (stories) {
-  var html = pug.renderFile('index.pug', { stories: stories })
-  fs.writeFile('index.html', html)
 }
 
 function getStories ($) {
@@ -46,13 +43,10 @@ function populateStories (stories, cb) {
       story.html = $('.article__body').html()
     })
     .catch(function (err) {
-      console.log(err)
     })
     promises.push(promise)
   })
-  Promise.all(promises).then(function () {
-    cb()
-  })
+  Promise.all(promises).then(cb)
 }
 
 // For local testing
