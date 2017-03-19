@@ -4,13 +4,15 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "node ./src/dev",
-    "build": "node ./src/build"
+    "start": "node ./local/fetch",
+    "build": "node ./local/build",
+    "upload": "node ./local/upload"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "aws-sdk": "^2.28.0",
     "cheerio": "^0.22.0",
     "pug": "^2.0.0-beta11",
     "request": "^2.81.0",

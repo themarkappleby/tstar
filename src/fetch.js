@@ -43,7 +43,6 @@ function populateStories (stories, cb) {
       story.html = $('.article__body').html()
     })
     .catch(function (err) {
-      console.log(err)
     })
     promises.push(promise)
   })
