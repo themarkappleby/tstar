@@ -7,7 +7,7 @@
     "start": "node ./local/fetch",
     "build": "node ./local/build",
     "upload": "node ./local/upload",
-    "zip": "zip -r ../tstar.zip *"
+    "zip": "rm -r node_modules/aws-sdk && zip -r ../tstar.zip *"
   },
   "keywords": [],
   "author": "",

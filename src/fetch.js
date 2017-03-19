@@ -1,13 +1,13 @@
 var request = require('request-promise')
 var cheerio = require('cheerio')
 var fs = require('fs')
-var buildTemplate = require('./build')
+var build = require('./build')
 
 var requestOptions = {
   uri: 'https://www.thestar.com/',
   rejectUnauthorized: false,
   transform: function (body) {
-    return cheerio.load(body)
+    return cheerio.load(sanitize(body))
   }
 }
 
@@ -16,7 +16,7 @@ function fetch () {
     var stories = getStories($)
     populateStories(stories, function () {
       fs.writeFile('./data/data.json', JSON.stringify(stories), function () {
-        buildTemplate()
+        build()
       })
     })
   })
@@ -46,6 +46,12 @@ function populateStories (stories, cb) {
     promises.push(promise)
   })
   Promise.all(promises).then(cb)
+}
+
+function sanitize (body) {
+  body = body.replace(/‘/g, "'")
+  body = body.replace(/’/g, "'")
+  return body
 }
 
 module.exports = fetch
