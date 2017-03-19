@@ -21,30 +21,44 @@ var types = {
 }
 
 function init () {
-  console.log('Uploading to: ' + s3.endpoint)
+  console.log('Uploading...')
   files.forEach(function (file) {
-    var name = file.split('/')
-    name = name[name.length - 1]
-    fs.readFile(file, 'utf-8', function (err, data) {
-      if (err) throw err
-      upload(name, data)
-    })
+    var name = getName(file)
+    var ext = getExt(name)
+    if (ext === 'png') {
+      fs.readFile(file, function (err, data) {
+        if (err) throw err
+        upload(name, data)
+      })
+    } else {
+      fs.readFile(file, 'utf-8', function (err, data) {
+        if (err) throw err
+        upload(name, data)
+      })
+    }
   })
 }
 
 function upload (name, body) {
-  var ext = name.split('.')[1]
   var param = {
     Bucket: 'tstar.com',
     Key: name,
     Body: body,
-    ContentDisposition: 'inline',
-    ContentType: types[ext]
+    ContentType: types[getExt(name)]
   }
   s3.upload(param, function (err, data) {
     if (err) console.log(err, err.stack)
     console.log('Uploaded: ' + name)
   })
+}
+
+function getName (path) {
+  var name = path.split('/')
+  return name[name.length - 1]
+}
+
+function getExt (name) {
+  return name.split('.')[1]
 }
 
 module.exports = init
