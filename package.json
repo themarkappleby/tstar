@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "fetch": "node ./src/fetchData",
+    "start": "node ./src/dev",
     "build": "node ./src/build"
   },
   "keywords": [],
