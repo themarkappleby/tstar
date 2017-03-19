@@ -11,7 +11,7 @@ var requestOptions = {
   }
 }
 
-exports.handler = (event, context, callback) => {
+function fetch () {
   request(requestOptions).then(function ($) {
     var stories = getStories($)
     populateStories(stories, function () {
@@ -20,7 +20,6 @@ exports.handler = (event, context, callback) => {
       })
     })
   })
-  // callback(null, 'Hello from Lambda')
 }
 
 function getStories ($) {
@@ -48,3 +47,5 @@ function populateStories (stories, cb) {
   })
   Promise.all(promises).then(cb)
 }
+
+module.exports = fetch

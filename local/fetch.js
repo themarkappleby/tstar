@@ -1,1 +1,1 @@
-require('../src/fetch').handler()
+require('../src/fetch')()
