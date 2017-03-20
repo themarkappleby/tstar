@@ -8,6 +8,9 @@ html
     link(rel="apple-touch-icon", href="/icon.png")
     link(rel="stylesheet", href="styles.css")
   body
+    .date 
+      .date-last Last Updated
+      .date-time= date
     .teasers
       each story in stories
         .teaser

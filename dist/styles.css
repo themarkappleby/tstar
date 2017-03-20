@@ -29,11 +29,28 @@ body {
   padding: 0;
   width: 100%;
   font-family: sans-serif;
-  background: #eee;
 }
 
 body.lock {
   overflow: hidden;
+}
+
+.date {
+  background-color: #0065a4;
+  color: white;
+  text-align: center;
+  padding: 10px;
+}
+
+.date-last {
+  font-size: 10px;
+  text-transform: uppercase;
+  opacity: 0.6;
+  margin-bottom: 2px;
+}
+
+.date-time {
+  font-size: 18px;
 }
 
 .teasers {
@@ -44,11 +61,8 @@ body.lock {
   position: relative;
   padding: 10px;
   padding-left: 100px;
-  border: 1px solid #eee;
-  border-radius: 2px;
-  margin: 10px;
+  border-bottom: 1px solid #eee;
   background: white;
-  box-shadow: 0 2px 3px rgba(0, 0, 0, 0.2);
   cursor: pointer;
 }
 
@@ -60,7 +74,7 @@ body.lock {
   width: 90px;
   background-size: cover;
   background-position: center center;
-  background-color: #0065a4;
+  background-color: #ccc;
 }
 
 .teaser-title {
@@ -69,6 +83,22 @@ body.lock {
   font-weight: normal;
   font-size: 14px;
   line-height: 20px;
+}
+
+.teaser:first-child {
+  padding: 0;
+}
+
+.teaser:first-child .teaser-img {
+  position: relative;
+  height: 200px;
+  width: 100%;
+}
+
+.teaser:first-child .teaser-title {
+  font-size: 21px;
+  padding: 15px;
+  line-height: 24px;
 }
 
 a {
@@ -94,6 +124,12 @@ a {
   padding: 20px;
   width: 50%;
   float: left;
+  transition: all 0.2s ease-in-out;
+}
+
+.controls-all:hover,
+.controls-next:hover {
+  background: #278fd0;
 }
 
 .controls-next {
@@ -101,22 +137,36 @@ a {
   border-left: 1px solid white;
 }
 
-.story {
-  display: none;
+.stories {
   position: fixed;
   top: 0;
   left: 0;
   right: 0;
   bottom: 58px;
+  transition: all 0.4s ease-in-out;
+  transform: translateX(100%);
+}
+
+.stories.is-active {
+  transform: translateX(0);
+}
+
+.story {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
   overflow: auto;
   -webkit-overflow-scrolling: touch;
-  background: white;
   padding: 20px;
   padding-top: 0;
+  background: white;
+  z-index: 1;
 }
 
 .story.is-active {
-  display: block;
+  z-index: 2;
 }
 
 .story p {
