@@ -15,9 +15,8 @@ function fetch () {
   request(requestOptions).then(function ($) {
     var stories = getStories($)
     populateStories(stories, function () {
-      fs.writeFile('./data/data.json', JSON.stringify(stories), function () {
-        build()
-      })
+      stories = JSON.stringify(stories)
+      fs.writeFile('./data/data.json', stories, build)
     })
   })
 }

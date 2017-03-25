@@ -7,6 +7,7 @@ var s3 = new AWS.S3({
 })
 
 var files = [
+  './data/data.json',
   './dist/index.html',
   './dist/scripts.js',
   './dist/styles.css',
@@ -14,6 +15,7 @@ var files = [
 ]
 
 var types = {
+  json: 'application/json',
   html: 'text/html',
   js: 'text/javascript',
   css: 'text/css',
