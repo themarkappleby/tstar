@@ -1,0 +1,186 @@
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  touch-action: manipulation;
+}
+
+img {
+  max-width: 100%;
+}
+
+figure {
+  margin: 0;
+  margin-bottom: 20px;
+}
+
+figcaption {
+  background: #eee;
+  padding: 10px;
+  font-size: 12px;
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  font-family: sans-serif;
+}
+
+body.lock {
+  overflow: hidden;
+}
+
+.date {
+  background-color: #0065a4;
+  color: white;
+  text-align: center;
+  padding: 10px;
+}
+
+.date-last {
+  font-size: 10px;
+  text-transform: uppercase;
+  opacity: 0.6;
+  margin-bottom: 2px;
+}
+
+.date-time {
+  font-size: 18px;
+}
+
+.teasers {
+  margin-bottom: 100px;
+}
+
+.teaser {
+  position: relative;
+  padding: 10px;
+  padding-left: 100px;
+  border-bottom: 1px solid #eee;
+  background: white;
+  cursor: pointer;
+}
+
+.teaser-img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  width: 90px;
+  background-size: cover;
+  background-position: center center;
+  background-color: #ccc;
+}
+
+.teaser-title {
+  margin: 0;
+  padding: 0;
+  font-weight: normal;
+  font-size: 14px;
+  line-height: 20px;
+}
+
+.teaser:first-child {
+  padding: 0;
+}
+
+.teaser:first-child .teaser-img {
+  position: relative;
+  height: 200px;
+  width: 100%;
+}
+
+.teaser:first-child .teaser-title {
+  font-size: 21px;
+  padding: 15px;
+  line-height: 24px;
+}
+
+a {
+  color: #0065a4;
+  text-decoration: none;
+}
+
+.controls {
+  display: none;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+}
+
+.controls-all,
+.controls-next {
+  cursor: pointer;
+  background: #0065a4;
+  color: white;
+  height: 58px;
+  text-align: center;
+  padding: 20px;
+  width: 50%;
+  float: left;
+  transition: all 0.2s ease-in-out;
+}
+
+.controls-all:hover,
+.controls-next:hover {
+  background: #278fd0;
+}
+
+.controls-next {
+  left: 50%;
+  border-left: 1px solid white;
+}
+
+.stories {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 58px;
+  transition: all 0.4s ease-in-out;
+  transform: translateX(100%);
+  background: white;
+}
+
+.stories.is-active {
+  transform: translateX(0);
+}
+
+.story {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  overflow: auto;
+  -webkit-overflow-scrolling: touch;
+  padding: 20px;
+  padding-top: 0;
+  background: white;
+  display: none;
+}
+
+.story.is-active {
+  display: block;
+}
+
+.story p {
+  font-size: 14px;
+  line-height: 24px;
+}
+
+.share-toolbar__primary,
+.related_topics,
+.slideshow,
+.show-right-rail,
+.article-continued,
+.brightcove-video-player,
+.newsletter-box {
+  display: none;
+}

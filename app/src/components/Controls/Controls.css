@@ -1,0 +1,30 @@
+.controls {
+  display: none;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+}
+
+.controls-all,
+.controls-next {
+  cursor: pointer;
+  background: #0065a4;
+  color: white;
+  height: 58px;
+  text-align: center;
+  padding: 20px;
+  width: 50%;
+  float: left;
+  transition: all 0.2s ease-in-out;
+}
+
+.controls-all:hover,
+.controls-next:hover {
+  background: #278fd0;
+}
+
+.controls-next {
+  left: 50%;
+  border-left: 1px solid white;
+}

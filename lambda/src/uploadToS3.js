@@ -1,4 +1,5 @@
 const AWS = require('aws-sdk')
+const moment = require('moment')
 
 function uploadToS3 (stories) {
   console.log('uploading to S3')
@@ -12,7 +13,7 @@ function uploadToS3 (stories) {
     var params = {
       Bucket: 'tstar.com',
       Key: 'data.json',
-      Body: JSON.stringify(stories),
+      Body: prepData(stories),
       ContentType: 'application/json'
     }
 
@@ -23,6 +24,13 @@ function uploadToS3 (stories) {
         resolve()
       }
     })
+  })
+}
+
+function prepData (data) {
+  return JSON.stringify({
+    stories: data,
+    date: moment().format('MMMM Do, h:mm a')
   })
 }
 

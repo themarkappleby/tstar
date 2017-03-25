@@ -1,0 +1,17 @@
+.date {
+  background-color: #0065a4;
+  color: white;
+  text-align: center;
+  padding: 10px;
+}
+
+.date-last {
+  font-size: 10px;
+  text-transform: uppercase;
+  opacity: 0.6;
+  margin-bottom: 2px;
+}
+
+.date-time {
+  font-size: 18px;
+}
