@@ -4,7 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "node index"
+    "start": "node index",
+    "zip": "rm -r node_modules/aws-sdk && zip -r ../tstar.zip *"
   },
   "keywords": [],
   "author": "",
