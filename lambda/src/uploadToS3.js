@@ -1,5 +1,5 @@
 const AWS = require('aws-sdk')
-const moment = require('moment')
+const moment = require('moment-timezone')
 
 function uploadToS3 (stories) {
   console.log('uploading to S3')
@@ -30,7 +30,7 @@ function uploadToS3 (stories) {
 function prepData (data) {
   return JSON.stringify({
     stories: data,
-    date: moment().local().format('MMMM Do, h:mm a')
+    date: moment().tz('America/New_York').format('MMMM Do, h:mm a')
   })
 }
 
