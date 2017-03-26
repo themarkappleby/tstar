@@ -9,6 +9,7 @@
   border-bottom: 1px solid #eee;
   background: white;
   cursor: pointer;
+  min-height: 60px;
 }
 
 .teaser-img {
@@ -41,6 +42,7 @@
   overflow: hidden;
 }
 
+.teaser:first-child .teaser-img:before,
 .teaser:first-child .teaser-img:after {
   content: '';
   display: block;
@@ -50,7 +52,13 @@
   right: -20px;
   height: 100px;
   background: white;
-  transform: rotate(-8deg);
+  transform: rotate(-5deg);
+}
+
+.teaser:first-child .teaser-img:before {
+  bottom: auto;
+  top: -65px;
+  background: #0065a4;
 }
 
 .teaser:first-child .teaser-title {
