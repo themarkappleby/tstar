@@ -17,7 +17,7 @@
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
-    "manifest": "appcache-manifest \"build/**/*.{html,css,js,png,ico,json}\" -o build/cache.manifest",
+    "manifest": "appcache-manifest \"build/**/*.{html,css,js,png,ico,json}\" --network-star -o build/cache.manifest",
     "upload": "yarn manifest && node upload"
   }
 }
