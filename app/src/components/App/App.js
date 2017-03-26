@@ -3,6 +3,7 @@ import Controls from '../Controls/Controls'
 import Date from '../Date/Date'
 import Stories from '../Stories/Stories'
 import Teasers from '../Teasers/Teasers'
+import { connect } from 'react-redux'
 import './App.css'
 
 class App extends Component {
@@ -15,13 +16,25 @@ class App extends Component {
     }
   }
 
+  componentWillReceiveProps(nextProps) {
+    document.body.classList.toggle('lock', nextProps.storyId)
+  }
+
   componentWillMount() {
-    const dataURL = 'https://s3.ca-central-1.amazonaws.com/tstar.com/data.json'
-    fetch(dataURL).then(response => {
-      response.json().then(data => {
-        this.setState(data)
+    const online = navigator.onLine
+    if (online) {
+      const dataURL = 'https://s3.ca-central-1.amazonaws.com/tstar.com/data.json'
+      fetch(dataURL).then(response => {
+        response.json().then(data => {
+          this.setState(data)
+          localStorage.setItem('data', JSON.stringify(data))
+        })
       })
-    })
+    } else {
+      let data = localStorage.getItem('data')
+      data = JSON.parse(data)
+      this.setState(data)
+    }
   }
 
   render() {
@@ -36,4 +49,10 @@ class App extends Component {
   }
 }
 
-export default App
+const mapStateToProps = state => {
+  return {
+    storyId: state.storyId
+  }
+}
+
+export default connect(mapStateToProps)(App)

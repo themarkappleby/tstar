@@ -1,14 +1,21 @@
 import React, { Component } from 'react'
+import { connect } from 'react-redux'
 import './Stories.css'
 
 class Stories extends Component {
   render() {
+    const classes = [
+      'stories',
+      this.props.storyId ? 'is-active' : ''
+    ].join(' ')
+
     return (
-      <div className="stories">
+      <div className={classes}>
         {this.props.stories.map((story, n) => (
           <Story
-            id={n}
-            key={n}
+            activeStory={this.props.storyId}
+            id={n + 1}
+            key={n + 1}
             title={story.title}
             html={story.html}
           />
@@ -20,13 +27,24 @@ class Stories extends Component {
 
 class Story extends Component {
   render() {
+    const classes = [
+      'story',
+      this.props.id === this.props.activeStory ? 'is-active' : ''
+    ].join(' ')
+
     return (
-      <div className="story">
+      <div className={classes}>
         <h2 className="story-title">{this.props.title}</h2>
-        <div>{this.props.html}</div>
+        <div dangerouslySetInnerHTML={{ __html: this.props.html }}></div>
       </div>
     )
   }
 }
 
-export default Stories
+const mapStateToProps = state => {
+  return {
+    storyId: state.storyId
+  }
+}
+
+export default connect(mapStateToProps)(Stories)

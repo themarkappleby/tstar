@@ -36,12 +36,26 @@
 
 .teaser:first-child .teaser-img {
   position: relative;
-  height: 200px;
+  height: 300px;
   width: 100%;
+  overflow: hidden;
+}
+
+.teaser:first-child .teaser-img:after {
+  content: '';
+  display: block;
+  position: absolute;
+  bottom: -65px;
+  left: -20px;
+  right: -20px;
+  height: 100px;
+  background: white;
+  transform: rotate(-8deg);
 }
 
 .teaser:first-child .teaser-title {
   font-size: 21px;
   padding: 15px;
+  padding-top: 0;
   line-height: 24px;
 }
