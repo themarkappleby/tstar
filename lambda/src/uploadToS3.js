@@ -30,7 +30,7 @@ function uploadToS3 (stories) {
 function prepData (data) {
   return JSON.stringify({
     stories: data,
-    date: moment().format('MMMM Do, h:mm a')
+    date: moment().local().format('MMMM Do, h:mm a')
   })
 }
 
